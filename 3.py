@@ -36,7 +36,7 @@ class book:
 
 
         imports = open('3.txt', 'wb')
-        imports.writelines(self.list.encode())
+        imports.write(self.list.encode())
         imports.close()
 
 
