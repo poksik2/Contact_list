@@ -110,7 +110,7 @@ class book:
                continue
         else:
             self.get_empty_list_msg()
-
+        # Проверка на пустоту файла
     def validation_name(self, name:str):
         if name in self.dict:
             new_number = input('Введите новый номер : ')
@@ -121,7 +121,7 @@ class book:
         if name == '':
             print('Имя не может быть пустым')
             return self.main()
-
+        # Проверка на совпадение и пустоту имени
     def validation_number(self, number):
         if len(number) == 11:
             print('Контакт успешно добавлен')
@@ -129,11 +129,10 @@ class book:
         else:
             print('Не правильная длина номера')
             self.main()
-
+        # Проверка номера по формату
 
     def edit_number(self):
         self.exports_from_file()
-
         name = input('Введите имя: ')
         if name in self.dict:
             new_number = input('Введите номер: ')
@@ -144,7 +143,7 @@ class book:
         else:
             print('Контакт с таким именем не найден!')
             return
-
+        # Редактор номера
 
 
 
