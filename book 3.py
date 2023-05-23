@@ -10,6 +10,7 @@ class ContactList:
     Create_File = 0
     def __init__(self):
         self.contacts = []
+        print(111)
 
     def initialize_contacts(self):
         # проверить есть ли файл с контактами, если нет, то создать
