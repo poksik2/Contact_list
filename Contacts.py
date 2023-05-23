@@ -8,7 +8,7 @@ class book:
         self.dict = {}
 
     def main(self):
-        self.file_check()
+        self.check_file()
         while True:
             try:    # Отлов KeyboardInterrupt
                 choice = (input('Что будем делать? (Посмотреть - 1, Добавить - 2, Удалить - 3, Редактировать - 4, Выход - Any Key): '))
@@ -81,7 +81,7 @@ class book:
         self.convert_dict_to_list()
         # Удаление элемента в dict, конвертация в list
 
-    def file_check(self):
+    def check_file(self):
         if os.path.exists("Contacts.txt"):
             return
         else:
