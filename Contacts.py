@@ -112,6 +112,12 @@ class book:
             self.get_empty_list_msg()
 
     def validation_name(self, name:str):
+        if name in self.dict:
+            new_number = input('Введите новый номер : ')
+            self.dict[name] = new_number
+            self.convert_dict_to_list()
+            self.import_to_file(self.list)
+            return self.main()
         if name == '':
             print('Имя не может быть пустым')
             return self.main()
