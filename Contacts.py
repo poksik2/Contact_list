@@ -18,7 +18,7 @@ class book:
             if choice == '1':
                 self.reading()
             elif choice == '2':
-                self.wtiting()
+                self.writing()
             elif choice == '3':
                 self.dellite()
             elif choice == '4':
@@ -27,7 +27,7 @@ class book:
                 self.get_exit_msg()
                 break
 
-    def wtiting(self) -> None:
+    def writing(self) -> None:
         name = str(input('Введите имя: '))
         self.validate_name(name)
         number = input('Введите номер: ')
