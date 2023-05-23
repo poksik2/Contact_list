@@ -1,6 +1,5 @@
 import json
 
-
 class book:
     def __init__(self) -> None:
         self.list = []
@@ -19,18 +18,12 @@ class book:
             else:
                 break
 
-
-
-
-
     def wtiting(self) -> None:
         name = str(input())
         number = input()
         self.dict[name] = number
         self.convert_dict_to_list()
         self.imports()
-
-
 
     def reading(self) -> None:
         self.exports()
@@ -39,18 +32,12 @@ class book:
         self.exports()
         self.dell()
         self.imports()
-        #self.list = json.dumps(self.keylist, sort_keys=True)
-        #imports = open('3.txt', 'wb')
-        #imports.write(bytes(self.list, encoding='utf-8'))
-        #imports.close()
-
 
     def exports(self):
         exports = open('Contacts.txt', 'rb')
         self.list = exports.read()
         self.convert_list_to_dict()
         exports.close()
-
 
     def convert_dict_to_list(self):
         self.list = json.dumps(self.dict, sort_keys=True)
@@ -59,8 +46,6 @@ class book:
         imports = open('Contacts.txt', 'wb')
         imports.write(self.list)
         imports.close()
-
-
 
     def convert_list_to_dict(self):
         self.list = bytes(self.list)
@@ -74,7 +59,6 @@ class book:
         name = str(input())
         del self.dict[name]
         self.convert_dict_to_list()
-
 
 my_list = book()
 my_list.main()
