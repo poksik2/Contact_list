@@ -23,26 +23,15 @@ class book:
 
     def inmport(self) -> None:
 
-
         name = str(input())
         number = input()
 
         self.keylist[name] = number
         self.list = json.dumps(self.keylist, sort_keys=True)
-        #self.list = json.loads(self.list)
-
-
         imports = open('3.txt', 'wb')
         imports.write(self.list.encode('utf-8'))
-
         imports.close()
-
-
-
-
         print(type(self.list))
-        #print(type(self.keylist))
-        #self.dell()
         print(self.list)
 
 
@@ -51,9 +40,7 @@ class book:
         self.list = exports.read()
         self.list = bytes(self.list, encoding='utf-8')
         self.keylist = json.loads(self.list)
-        #self.list = json.load()
-        #print(type(self.list))
-        #print(self.list)
+        print(type(self.keylist))
         print(self.keylist)
         exports.close()
 
