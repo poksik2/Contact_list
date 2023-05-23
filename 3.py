@@ -29,7 +29,7 @@ class book:
         self.keylist[name] = number
         self.list = json.dumps(self.keylist, sort_keys=True)
         imports = open('3.txt', 'wb')
-        imports.write(self.list.encode('utf-8'))
+        imports.write(bytes(self.list, encoding= 'utf-8'))
         imports.close()
         print(type(self.list))
         print(self.list)
@@ -38,10 +38,14 @@ class book:
     def exports(self) -> None:
         exports = open('3.txt', 'r')
         self.list = exports.read()
+        #self.list = list(self.list)
         self.list = bytes(self.list, encoding='utf-8')
         self.keylist = json.loads(self.list)
-        print(type(self.keylist))
-        print(self.keylist)
+
+        for key, value in self.keylist.items():
+            print(key, ':', value)
+        #print(type(self.keylist))
+        #print(self.keylist)
         exports.close()
 
 
