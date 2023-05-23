@@ -29,9 +29,9 @@ class book:
 
     def wtiting(self) -> None:
         name = str(input('Введите имя: '))
-        self.validation_name(name)
+        self.validate_name(name)
         number = input('Введите номер: ')
-        self.validation_number(number)
+        self.validate_number(number)
         self.dict[name] = number
         self.convert_dict_to_list()
         self.import_to_file(self.list)
@@ -111,7 +111,7 @@ class book:
         else:
             self.get_empty_list_msg()
         # Проверка на пустоту файла
-    def validation_name(self, name:str):
+    def validate_name(self, name:str):
         if name in self.dict:
             new_number = input('Введите новый номер : ')
             self.dict[name] = new_number
@@ -122,7 +122,7 @@ class book:
             print('Имя не может быть пустым')
             return self.main()
         # Проверка на совпадение и пустоту имени
-    def validation_number(self, number):
+    def validate_number(self, number):
         if len(number) == 11:
             print('Контакт успешно добавлен')
             return
