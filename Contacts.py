@@ -11,7 +11,7 @@ class book:
         self.file_check()
         while True:
             try:    # Отлов KeyboardInterrupt
-                choice = (input('Что будем делать? (Посмотреть - 1, Добавить - 2, Удалить - 3, Выход - Any Key): '))  # вынеси в метод
+                choice = (input('Что будем делать? (Посмотреть - 1, Добавить - 2, Удалить - 3, Редактировать - 4, Выход - Any Key): '))
             except KeyboardInterrupt:
                 self.get_exit_msg()
                 break
@@ -21,15 +21,17 @@ class book:
                 self.wtiting()
             elif choice == '3':
                 self.dellite()
+            elif choice == '4':
+                self.edit_number()
             else:
                 self.get_exit_msg()
                 break
 
     def wtiting(self) -> None:
         name = str(input('Введите имя: '))
+        self.validation_name(name)
         number = input('Введите номер: ')
-        #self.validation_name(name)
-        #self.validation_number(number)
+        self.validation_number(number)
         self.dict[name] = number
         self.convert_dict_to_list()
         self.import_to_file(self.list)
@@ -73,8 +75,9 @@ class book:
             print(key, ':', value)
         # Вывод dict построчно
     def dell(self):
-        name = str(input())
+        name = str(input('Введите имя: '))
         del self.dict[name]
+        print(f'Контакт {name} удален')
         self.convert_dict_to_list()
         # Удаление элемента в dict, конвертация в list
 
@@ -111,12 +114,32 @@ class book:
     def validation_name(self, name:str):
         if name == '':
             print('Имя не может быть пустым')
-            self.main()
+            return self.main()
 
     def validation_number(self, number):
-        if len(number) != 10:
+        if len(number) == 11:
+            print('Контакт успешно добавлен')
+            return
+        else:
             print('Не правильная длина номера')
             self.main()
+
+
+    def edit_number(self):
+        self.exports_from_file()
+
+        name = input('Введите имя: ')
+        if name in self.dict:
+            new_number = input('Введите номер: ')
+            self.dict[name] = new_number
+            self.convert_dict_to_list()
+            self.import_to_file(self.list)
+            return
+        else:
+            print('Контакт с таким именем не найден!')
+            return
+
+
 
 
 my_list = book()
