@@ -78,7 +78,7 @@ class ContactList:
         #self.contacts.close()
 
 
-    def add_contact_choice(self) -> None:
+    def handle_add_choice(self) -> None:
         name = input('Введите имя: ')
         phone_number = input('Введите номер: ')
 
