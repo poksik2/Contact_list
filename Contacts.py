@@ -7,7 +7,7 @@ class book:
         self.list = []
         self.dict = {}
 
-    def main(self):
+    def main(self) -> None:
         self.check_file()
         while True:
             try:    # Отлов KeyboardInterrupt
@@ -44,44 +44,44 @@ class book:
         self.listing()
         # Печать заголовка, чтение из файла в list и конвертация в dict, Вывод в столбик
 
-    def dellite(self):
+    def dellite(self) -> None:
         self.exports_from_file()
         self.dell()
         self.import_to_file(self.list)
         #Чтение из файла в list и конвертация в dict, удаление и конвертация в dict, запись в файл
 
-    def exports_from_file(self):
+    def exports_from_file(self) -> None:
         exports = open('Contacts.txt', 'rb')
         self.list = exports.read()
         self.convert_list_to_dict()
         exports.close()
         # Открытие файла, чтение в list, конвертация в dict, закрытие файла
 
-    def convert_dict_to_list(self):
+    def convert_dict_to_list(self) -> None:
         self.list = json.dumps(self.dict, sort_keys=True)
         self.list = bytes(self.list, encoding='utf-8')
 
-    def import_to_file(self, list):
+    def import_to_file(self, list) -> None:
         imports = open('Contacts.txt', 'wb')
         imports.write(list)
         imports.close()
         # Открытие файла, запись в файл, закрытие файла
-    def convert_list_to_dict(self):
+    def convert_list_to_dict(self) -> None:
         self.list = bytes(self.list)
         self.dict = json.loads(self.list)
 
-    def listing(self):
+    def listing(self) -> None:
         for key, value in self.dict.items():
             print(key, ':', value)
         # Вывод dict построчно
-    def dell(self):
+    def dell(self) -> None:
         name = str(input('Введите имя: '))
         del self.dict[name]
         print(f'Контакт {name} удален')
         self.convert_dict_to_list()
         # Удаление элемента в dict, конвертация в list
 
-    def check_file(self):
+    def check_file(self) -> None:
         if os.path.exists("Contacts.txt"):
             return
         else:
@@ -89,22 +89,22 @@ class book:
             self.open_close()
         # Проверка наличия файла
 
-    def print_title(self):
+    def print_title(self) -> None:
         print(self.title)
         # Печать заголовка
-    def open_close(self):
+    def open_close(self) -> None:
         self.convert_dict_to_list()
         self.import_to_file(self.list)
         self.convert_list_to_dict()
         self.exports_from_file()
 
-    def get_exit_msg(self):
+    def get_exit_msg(self) -> None:
         print('ВСЕГО ХОРОШЕГО!!!')
 
     def get_empty_list_msg(self) -> None:
         print('Список контактов пуст')
 
-    def Empry_list(self):
+    def Empry_list(self) -> None:
         if self.list:
             for contact in self.list:
                continue
