@@ -33,8 +33,8 @@ class book:
 
 
         imports = open('3.txt', 'wb')
-        imports.write(self.list.encode())
-        self.list.encode()
+        imports.write(self.list.encode('utf-8'))
+
         imports.close()
 
 
@@ -43,16 +43,18 @@ class book:
         print(type(self.list))
         #print(type(self.keylist))
         #self.dell()
-        #print(self.list)
+        print(self.list)
 
 
     def exports(self) -> None:
         exports = open('3.txt', 'r')
         self.list = exports.read()
-        self.list = self.list.encode()
-        self.list = json.load(self.list.decode())
-        print(type(self.list))
-        print(self.list)
+        self.list = bytes(self.list, encoding='utf-8')
+        self.keylist = json.loads(self.list)
+        #self.list = json.load()
+        #print(type(self.list))
+        #print(self.list)
+        print(self.keylist)
         exports.close()
 
 
