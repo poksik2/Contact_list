@@ -1,38 +1,26 @@
 class BookMessage:
-
     def get_menu_msg(self) -> str:
         return 'Что будем делать? (Посмотреть - 1, Добавить или редактировать - 2, Удалить - 3,  Выход - Any Key): '
-
     def tile_string(self)-> str:
         return '====Список контактов===='
-
     def enter_name_msg(self)-> str:
         return 'Введите имя контакта: '
-
     def enter_number_msg(self)-> str:
         return 'Ведите номер контакта: '
-
     def enter_new_name_msg(self):
         return 'Ведите новый номер контакта: '
-
     def empty_name_msg(self)-> str:
         return 'Имя не может быть пустым'
-
     def overwrite_name_or_no(self, name)-> str:
         return f'Контакт с таким именем уже есть. Хотите изменить номер для {name} (Да - 1, Нет - 2): '
-
     def get_exit_msg(self)-> str:
         return 'ВСЕГО ХОРОШЕГО!!!'
-
     def enter_name_for_dellete(self)-> str:
         return 'Введите имя контакта который хотите удалить: '
-
     def delete_contact_true(self)-> str:
         return 'Контакт удален!'
-
     def added_successfully_contact(self)-> str:
         return 'Контакт успешно добавлен!'
-
     def file_if_creating(self)-> str:
         return 'Файл создан'
 
@@ -41,7 +29,6 @@ class BookList:
     def __init__(self):
         self.contact_list = {}
         self.msg_creator = BookMessage()
-
 
     def main(self):
         try:
