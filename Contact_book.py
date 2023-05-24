@@ -88,7 +88,6 @@ class BookList:
         for key, value in self.contact_list.items():
             print(key, value)
 
-
     def write_contact(self):
         self.receiving_and_verifying_and_write_data()
     def receiving_and_verifying_and_write_data(self):
@@ -102,10 +101,6 @@ class BookList:
         return name
 
 
-    def entering_number(self):
-        phone_number = input(self.msg_creator.enter_number_msg())
-        self.validation_number(phone_number)
-        return phone_number
     def validation_name(self, name: str):
         if not name:
             self.action_empty_name()
@@ -134,6 +129,10 @@ class BookList:
         elif choice_action_name == '2':
             self.write_contact()
 
+    def entering_number(self):
+        phone_number = input(self.msg_creator.enter_number_msg())
+        self.validation_number(phone_number)
+        return phone_number
 
     def validation_number(self, number):
         if len(number) == self.NUMBER_LEN:
