@@ -53,7 +53,7 @@ class BookList:
 
         while True:
             self.initialize_contact()
-            choice = self.suggest_a_choice()
+            choice = self.suggest_are_choice()
             if choice == '1':
                 self.read_the_list()
             elif choice == '2':
@@ -80,7 +80,7 @@ class BookList:
             with open('my_contact_list.txt', 'w', encoding='utf-8') as file:
                 return print(self.msg_creator.file_if_creating)
 
-    def suggest_a_choice(self) -> str:
+    def suggest_are_choice(self) -> str:
         return input(self.msg_creator.get_menu_msg())
 
     def read_the_list(self):
