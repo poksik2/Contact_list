@@ -9,6 +9,8 @@ class BookMessage:
         return 'Ведите номер контакта: '
     def enter_new_name_msg(self):
         return 'Ведите новый номер контакта: '
+    def number_len_err(self):
+        return f'Длинна номера должна быть {BookList.NUMBER_LEN}'
     def empty_name_msg(self)-> str:
         return 'Имя не может быть пустым'
     def overwrite_name_or_no(self, name)-> str:
@@ -87,13 +89,11 @@ class BookList:
         self.validation_name(name)
         return name
 
-
     def validation_name(self, name: str):
         if not name:
             self.action_empty_name()
         else:
             self.action_match_name(name)
-
 
     def action_empty_name(self):
         print(self.msg_creator.empty_name_msg())
@@ -103,7 +103,6 @@ class BookList:
         if name in self.contact_list:
             choice_action_name = input(self.msg_creator.overwrite_name_or_no(name))
             self.choice_action_for_repeat_name(choice_action_name, name)
-
 
     def choice_action_for_repeat_name(self, choice_action_name, name):
         if choice_action_name == '1':
@@ -126,7 +125,8 @@ class BookList:
             print(self.msg_creator.added_successfully_contact)
 
         else:
-            print(f'Длинна номера должна быть {self.NUMBER_LEN}')
+            print(self.msg_creator.number_len_err())
+            self.start_program()
 
     def write_data_to_list(self, name, phone_number):
         self.contact_list[name] = phone_number
@@ -135,15 +135,13 @@ class BookList:
     def delete_contact(self):
         name = input(self.msg_creator.enter_name_for_dellete())
         del self.contact_list[name]
+        self.write_list_to_file()
         print(self.msg_creator.delete_contact_true())
-
 
     def write_list_to_file(self):
         with open('my_contact_list.txt', 'w', encoding='utf-8') as file:
             for name, number in self.contact_list.items():
                 file.write(f'{name}, {number}\n')
 
-
 start = BookList()
 start.main()
-
