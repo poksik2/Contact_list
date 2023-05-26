@@ -32,11 +32,9 @@ class Guess_number:
             self.game_over()
             self.clear_list()
 
-
     def fill_number_list(self):
         self.one_random_number.append(random.randint(0, 10))
         print(self.one_random_number)
-
 
     def check_number(self):
         #number = int(self.input_number())
@@ -54,6 +52,7 @@ class Guess_number:
         if self.COUNTER < 0:
             print('GameOver!')
             exit()
+
     def clear_list(self):
         self.one_random_number.clear()
 

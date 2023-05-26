@@ -131,6 +131,7 @@ class BookList:
     def input_phone_number(self):
         phone_number = input(self.msg_creator.enter_number_msg())
         return phone_number
+
     def validation_number(self, number):
         if len(number) == self.NUMBER_LEN:
             print(self.msg_creator.added_successfully_contact())
