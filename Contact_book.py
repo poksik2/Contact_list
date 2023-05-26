@@ -133,7 +133,7 @@ class BookList:
         return phone_number
     def validation_number(self, number):
         if len(number) == self.NUMBER_LEN:
-            print(self.msg_creator.added_successfully_contact)
+            print(self.msg_creator.added_successfully_contact())
         else:
             print(self.msg_creator.number_len_err())
             self.start_program()
