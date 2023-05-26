@@ -21,7 +21,7 @@ class BookMessage:
         return 'Введите имя контакта который хотите удалить: '
     def delete_contact_true(self)-> str:
         return 'Контакт удален!'
-    def added_successfully_contact(self)-> str:
+    def added_successfully_contact(self) -> str:
         return 'Контакт успешно добавлен!'
     def file_if_creating(self)-> str:
         return 'Файл создан'
@@ -59,16 +59,21 @@ class BookList:
 
     def initialize_contact(self):
         try:
-            with open('my_contact_list.txt', 'r', encoding='utf-8') as file:
-                file_string = file.readlines()
-                for string in file_string:
-                    string = string.strip()
-                    name, number = string.split(', ')
-                    self.contact_list[name] = number
+            self.import_to_list()
         except:
-            with open('my_contact_list.txt', 'w', encoding='utf-8') as file:
-                return print(self.msg_creator.file_if_creating)
+            self.create_file()
 
+    def import_to_list(self):
+        with open('my_contact_list.txt', 'r', encoding='utf-8') as file:
+            file_string = file.readlines()
+            for string in file_string:
+                string = string.strip()
+                name, number = string.split(', ')
+                self.contact_list[name] = number
+
+    def create_file(self):
+        with open('my_contact_list.txt', 'w', encoding='utf-8') as file:
+            return print(self.msg_creator.file_if_creating)
     def suggest_are_choice(self) -> str:
         return input(self.msg_creator.get_menu_msg())
 
@@ -85,10 +90,13 @@ class BookList:
         self.write_data_to_list(name, phone_number)
 
     def entering_name(self):
-        name = input(self.msg_creator.enter_name_msg())
+        name = self.input_name()
         self.validation_name(name)
         return name
 
+    def input_name(self):
+        name = input(self.msg_creator.enter_name_msg())
+        return name
     def validation_name(self, name: str):
         if not name:
             self.action_empty_name()
@@ -116,14 +124,16 @@ class BookList:
             self.write_contact()
 
     def entering_number(self):
-        phone_number = input(self.msg_creator.enter_number_msg())
+        phone_number = self.input_phone_number()
         self.validation_number(phone_number)
         return phone_number
 
+    def input_phone_number(self):
+        phone_number = input(self.msg_creator.enter_number_msg())
+        return phone_number
     def validation_number(self, number):
         if len(number) == self.NUMBER_LEN:
             print(self.msg_creator.added_successfully_contact)
-
         else:
             print(self.msg_creator.number_len_err())
             self.start_program()
@@ -133,10 +143,14 @@ class BookList:
         self.start_program()
 
     def delete_contact(self):
-        name = input(self.msg_creator.enter_name_for_dellete())
+        name = self.input_name_for_delete()
         del self.contact_list[name]
         self.write_list_to_file()
         print(self.msg_creator.delete_contact_true())
+
+    def input_name_for_delete(self):
+        name = input(self.msg_creator.enter_name_for_dellete())
+        return name
 
     def write_list_to_file(self):
         with open('my_contact_list.txt', 'w', encoding='utf-8') as file:
