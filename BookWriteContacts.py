@@ -12,9 +12,10 @@ class BookWriteContacts:
     def write_contacts(self):
         self.contacts.update(self.add_contact.add_cont.dicts)
         #print(self.contacts)
-        with open(self.FILE_NAME, 'a', encoding='utf-8') as file:
+        with open(self.FILE_NAME, 'w', encoding='utf-8') as file:
             for name, number in self.contacts.items():
                 file.write(f'{name}, {number}\n')
                 #file.writelines(f'{name}, {number} ')
 
 write = BookWriteContacts()
+write.__init__()
