@@ -15,10 +15,16 @@ class BookMain:
         self.write_contact = BookWriteContacts
         self.delete_contact = BookDeleteContacts
 
+    def catching_error(self):
+        try:
+            self.main()
+        finally:
+            self.exit_programm()
+
     def main(self):
         self.read.read.initialize_contact()
         while True:
-            choise = input('1 - Read, 2 - Write, 3 - Delete, Any key - Exit: ')
+            choise = input(self.msg.BookMessage.MENU)
             if choise == '1':
                 self.contacts = self.read.read.contacts_read
                 self.read.read.print_contacts()
@@ -34,11 +40,9 @@ class BookMain:
                 self.write_contact.write.write_contacts()
                 exit()
 
-
-
-
-
-
+    def exit_programm(self):
+        print(self.msg.BookMessage.EXIT)
+        exit()
 
 start = BookMain()
-start.main()
+start.catching_error()

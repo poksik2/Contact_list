@@ -14,7 +14,6 @@ class BookReadContacts:
         except:
             self.create_file()
 
-
     def import_contacts(self):
         with open(self.FILE_NAME, 'r', encoding='utf-8') as file:
             file_string = file.readlines()
@@ -22,18 +21,19 @@ class BookReadContacts:
                 string = string.strip()
                 name, number = string.split(', ')
                 self.read_contacts(name, number)
+    def read_contacts(self, name, number):
+        self.contacts_read[name] = number
+        self.add_contact.add_cont.dicts.update(self.contacts_read)
 
     def create_file(self) -> None:
         with open(self.FILE_NAME, 'w', encoding='utf-8') as file:
             return print(BookMessage.BookMessage.SUCCESS_CREATED)
 
-    def read_contacts(self, name, number):
-        self.contacts_read[name] = number
-        self.add_contact.add_cont.dicts.update(self.contacts_read)
-
     def print_contacts(self):
+        print(self.msg.BookMessage.TITLE)
         for key, value in self.add_contact.add_cont.dicts.items():
             print(key, value)
+
 
 read = BookReadContacts()
 read.__init__()

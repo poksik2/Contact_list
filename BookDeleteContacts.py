@@ -8,8 +8,8 @@ class BookDeleteContacts:
         self.add_contact = BookAddContacts
 
     def delete_contact(self):
-        print(self.add_contact.add_cont.dicts)
         del self.add_contact.add_cont.dicts[self.add_contact.add_cont.enter_name()]
+        print(self.msg.BookMessage.DELETE_CONTACT)
 
 delete_cnt = BookDeleteContacts()
 delete_cnt.__init__()
