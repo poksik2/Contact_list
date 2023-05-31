@@ -1,34 +1,43 @@
 import BookMessage
-#import BookReadContacts
+
+
+# import BookReadContacts
 
 class BookAddContacts:
 
     def __init__(self):
         self.dicts = {}
         self.msg = BookMessage
-        #self.read = BookReadContacts
+        # self.read = BookReadContacts
+
     def add_contacts(self):
-        name = self.enter_name()
-        name = self.validate_name(name)
+        name = self.create_name()
         number = self.enter_number()
         number = self.validate_number(number)
         self.add(name, number)
 
+    def create_name(self):
+        name = self.enter_name()
+        self.validate_name(name)
+        return name
+
+    def create_number(self):
+        pass
+
     def enter_name(self):
+        # !
         name = input(self.msg.BookMessage.ENTER_NAME)
         return name
 
     def validate_name(self, name):
         if not name:
             self.empty_name()
-            name = self.enter_name()
-            return name
+            self.create_name()
+
         elif name in self.dicts:
+            # просто говорить что контакт с таким именем есть, введите новое имя
             choise = input(self.msg.BookMessage.OVERWRITE_NUMBER)
             name = self.choise(choise, name)
-            return name
-        else:
-            return name
 
     def empty_name(self):
         print(self.msg.BookMessage.EMPTY_NAME)
@@ -45,7 +54,6 @@ class BookAddContacts:
             return name
         elif choise == "2":
             return name
-
 
     def enter_number(self):
         number = input(self.msg.BookMessage.ENTER_NUMBER)
@@ -66,4 +74,3 @@ class BookAddContacts:
 
 add_cont = BookAddContacts()
 add_cont.__init__()
-

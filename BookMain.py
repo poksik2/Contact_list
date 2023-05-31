@@ -3,6 +3,8 @@ import BookAddContacts
 import BookReadContacts
 import BookDeleteContacts
 import BookWriteContacts
+from BookReadContacts import BookReadContacts
+# читай про импорты
 
 
 class BookMain:

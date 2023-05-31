@@ -1,10 +1,12 @@
 import BookMessage
 import BookAddContacts
 
+
 class BookReadContacts:
     FILE_NAME = 'my_contact_list_1.1.txt'
+
     def __init__(self):
-        self.contacts_read = {}
+        self.contacts_read = {}  # !
         self.msg = BookMessage
         self.add_contact = BookAddContacts
 
@@ -21,7 +23,9 @@ class BookReadContacts:
                 string = string.strip()
                 name, number = string.split(', ')
                 self.read_contacts(name, number)
+
     def read_contacts(self, name, number):
+        # !
         self.contacts_read[name] = number
         self.add_contact.add_cont.dicts.update(self.contacts_read)
 
