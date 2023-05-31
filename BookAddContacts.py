@@ -23,10 +23,11 @@ class BookAddContacts:
             self.empty_name()
             name = self.enter_name()
             return name
+        elif name in self.dicts:
+            choise = input(self.msg.BookMessage.OVERWRITE_NUMBER)
+            name = self.choise(choise, name)
+            return name
         else:
-            name = self.match_name(name)
-#При повторе имени предлагает создать новый или редактировать старый
-#При выборе создать новый контакт перезаписывает уже имеющийся!!!???
             return name
 
     def empty_name(self):
