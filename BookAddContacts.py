@@ -44,8 +44,6 @@ class BookAddContacts:
             name = self.enter_name()
             return name
         elif choise == "2":
-            #number = self.enter_number()
-            #self.add(name, number)
             return name
 
 
