@@ -7,15 +7,14 @@ class BookWriteContacts:
     FILE_NAME = 'my_contact_list_1.1.txt'
 
     def __init__(self):
-        self.contacts = {}
-        self.add_contact = BookAddContacts
+        #self.contacts = contacts
+        pass
 
-    def write_contacts(self):
-        self.contacts.update(self.add_contact.add_cont.dicts)
+    def save_contacts(self, contacts):
         with open(self.FILE_NAME, 'w', encoding='utf-8') as file:
-            for name, number in self.contacts.items():
+            for name, number in contacts.items():
                 file.write(f'{name}, {number}\n')
 
 
-write = BookWriteContacts()
-write.__init__()
+#write = BookWriteContacts()
+

@@ -1,50 +1,46 @@
-import BookMessage
-import BookAddContacts
-import BookReadContacts
-import BookDeleteContacts
-import BookWriteContacts
+from BookMessage import BookMessage
 from BookReadContacts import BookReadContacts
+from BookAddContacts import BookAddContacts
+from BookWriteContacts import BookWriteContacts
+from BookDeleteContacts import BookDeleteContacts
 # читай про импорты
 
 
-class BookMain:
-
+class MainContact:
     def __init__(self):
         self.contacts = {}
-        self.msg = BookMessage
-        self.read = BookReadContacts
-        self.add_contact = BookAddContacts
-        self.write_contact = BookWriteContacts
-        self.delete_contact = BookDeleteContacts
-
-    def catching_error(self):
-        try:
-            self.main()
-        finally:
-            self.exit_programm()
+        self.message = BookMessage()
+        self.reader = BookReadContacts()
+        self.writer = BookAddContacts(self.contacts)
+        self.deleter = BookDeleteContacts()
+        self.saver = BookWriteContacts()
 
     def main(self):
-        self.read.read.initialize_contact()
+        try:
+            self.start_program()
+        finally:
+            self.exit_program()
+
+    def start_program(self):
+        self.reader.initialize_contact(self.contacts)
         while True:
-            choise = input(self.msg.BookMessage.MENU)
-            if choise == '1':
-                self.contacts = self.read.read.contacts_read
-                self.read.read.print_contacts()
+            choice = input(self.message.MENU)
+            if choice == '1':
+                self.reader.print_contacts(self.contacts)
 
-            elif choise == '2':
-                self.add_contact.add_cont.add_contacts()
-                self.contacts.update(self.add_contact.add_cont.dicts)
+            elif choice == '2':
+                self.writer.create_contact()
 
-            elif choise == '3':
-                self.delete_contact.delete_cnt.delete_contact()
+            elif choice == '3':
+                self.deleter.remove_name(self.contacts)
 
             else:
-                self.write_contact.write.write_contacts()
+                self.saver.save_contacts(self.contacts)
                 exit()
 
-    def exit_programm(self):
-        print(self.msg.BookMessage.EXIT)
+    def exit_program(self):
+        print(self.message.EXIT)
         exit()
 
-start = BookMain()
-start.catching_error()
+start = MainContact()
+start.main()

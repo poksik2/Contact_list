@@ -1,15 +1,28 @@
-import BookMessage
-import BookAddContacts
+from BookMessage import BookMessage
+
 
 class BookDeleteContacts:
 
     def __init__(self):
-        self.msg = BookMessage
-        self.add_contact = BookAddContacts
+        #self.contacts = contacts
+        self.message = BookMessage()
 
-    def delete_contact(self):
-        del self.add_contact.add_cont.dicts[self.add_contact.add_cont.enter_name()]
-        print(self.msg.BookMessage.DELETE_CONTACT)
 
-delete_cnt = BookDeleteContacts()
-delete_cnt.__init__()
+    def remove_name(self, contacts):
+        name = input(self.message.ENTER_NAME)
+        self.validate_name(name, contacts)
+        self.delete_contact(name, contacts)
+        return name
+
+    def validate_name(self, name , contacts):
+        if not name in contacts:
+            print('Нет контакта с таким именем')
+
+        else:
+            return
+
+    def delete_contact(self, name, contacts):
+        del contacts[name]
+        print(self.message.DELETE_CONTACT)
+
+#delete_cnt = BookDeleteContacts()

@@ -36,6 +36,7 @@ class ContactSaver:
 
 class MainContact:
     def __init__(self):
+
         self.reader = ContactReader()
         self.writer = ContactCreator(self.reader.contacts)
         self.deleter = ContactDeleter()
