@@ -1,6 +1,6 @@
 # import BookMessage
 
-import BookAddContacts
+import book_add_contacts
 
 
 class BookWriteContacts:

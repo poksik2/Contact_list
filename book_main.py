@@ -1,8 +1,8 @@
-from BookMessage import BookMessage
-from BookReadContacts import BookReadContacts
-from BookAddContacts import BookAddContacts
-from BookWriteContacts import BookWriteContacts
-from BookDeleteContacts import BookDeleteContacts
+from book_message import BookMessage
+from book_read_contacts import BookReadContacts
+from book_add_contacts import BookAddContacts
+from book_write_contacts import BookWriteContacts
+from book_delete_contacts import BookDeleteContacts
 # читай про импорты
 
 

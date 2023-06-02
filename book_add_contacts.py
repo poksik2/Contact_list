@@ -1,4 +1,4 @@
-from BookMessage import BookMessage
+from book_message import BookMessage
 
 class BookAddContacts:
 
