@@ -12,7 +12,6 @@ class Parser:
         bs = BeautifulSoup(r.text, "html.parser")
         print(bs)
         table = bs.find('div', class_="information__content__temperature")
-
         print(table.text)
 
 
