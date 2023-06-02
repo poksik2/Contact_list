@@ -4,9 +4,7 @@ from book_message import BookMessage
 class BookDeleteContacts:
 
     def __init__(self):
-        #self.contacts = contacts
         self.message = BookMessage()
-
 
     def remove_name(self, contacts):
         name = input(self.message.ENTER_NAME)
@@ -15,9 +13,8 @@ class BookDeleteContacts:
         return name
 
     def validate_name(self, name , contacts):
-        if not name in contacts:
+        if name not in contacts:
             print('Нет контакта с таким именем')
-
         else:
             return
 

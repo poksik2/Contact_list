@@ -9,15 +9,17 @@ class BookAddContacts:
     def create_contact(self):
         name = self.create_name()
         number = self.create_number()
-        self.add(name, number)
+        self.add_contact(name, number)
 
     def create_name(self):
         name = self.enter_name()
         name = self.validate_name(name)
         return name
+
     def enter_name(self):
         name = input(self.message.ENTER_NAME)
         return name
+
     def validate_name(self, name):
         if not name:
             print(self.message.EMPTY_NAME)
@@ -35,7 +37,6 @@ class BookAddContacts:
         number = self.validate_number(number)
         return number
 
-
     def enter_number(self):
         number = input(self.message.ENTER_NUMBER)
         return number
@@ -49,7 +50,7 @@ class BookAddContacts:
             number = self.create_number()
             return number
 
-    def add(self, name, number):
+    def add_contact(self, name, number):
         self.contacts[name] = number
 
 

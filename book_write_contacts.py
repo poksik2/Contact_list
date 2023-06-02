@@ -1,13 +1,8 @@
-# import BookMessage
-
-import book_add_contacts
-
 
 class BookWriteContacts:
     FILE_NAME = 'my_contact_list_1.1.txt'
 
     def __init__(self):
-        #self.contacts = contacts
         pass
 
     def save_contacts(self, contacts):

@@ -1,7 +1,6 @@
 from book_message import BookMessage
 
 
-
 class BookReadContacts:
     FILE_NAME = 'my_contact_list_1.1.txt'
 

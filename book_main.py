@@ -3,7 +3,6 @@ from book_read_contacts import BookReadContacts
 from book_add_contacts import BookAddContacts
 from book_write_contacts import BookWriteContacts
 from book_delete_contacts import BookDeleteContacts
-# читай про импорты
 
 
 class MainContact:
