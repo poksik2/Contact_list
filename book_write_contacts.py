@@ -12,4 +12,3 @@ class BookWriteContacts:
 
 
 #write = BookWriteContacts()
-

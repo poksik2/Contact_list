@@ -12,7 +12,7 @@ class BookDeleteContacts:
         self.delete_contact(name, contacts)
         return name
 
-    def validate_name(self, name , contacts):
+    def validate_name(self, name, contacts):
         if name not in contacts:
             print('Нет контакта с таким именем')
         else:

@@ -1,5 +1,6 @@
 from book_message import BookMessage
 
+
 class BookAddContacts:
 
     def __init__(self, contacts):
@@ -26,7 +27,6 @@ class BookAddContacts:
             name = self.create_name()
             return name
         elif name in self.contacts:
-            # просто говорить что контакт с таким именем есть, введите новое имя
             print(self.message.OVERWRITE_NUMBER)
             self.create_contact()
         else:
@@ -55,4 +55,3 @@ class BookAddContacts:
 
 
 #add_cont = BookAddContacts()
-
