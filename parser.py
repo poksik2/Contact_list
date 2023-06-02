@@ -8,12 +8,11 @@ class Parser:
 
     def pars(self):
         r = requests.get(self.URL_SITE)
-        print(r)
         bs = BeautifulSoup(r.text, "html.parser")
-        print(bs)
         table = bs.find('div', class_="information__content__temperature")
-        print(table.text)
-
+        print('Сейчас за окном',table.text.strip())
+        tible1 = bs.find('span', title="Ощущается как +23°")
+        print(tible1.text.strip())
 
 p = Parser()
 p.pars()
