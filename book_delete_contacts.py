@@ -14,7 +14,7 @@ class BookDeleteContacts:
 
     def validate_name(self, name, contacts):
         if name not in contacts:
-            print('Нет контакта с таким именем')
+            print(self.message.NO_CONTACT)
         else:
             return
 

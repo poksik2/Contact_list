@@ -11,5 +11,6 @@ class BookMessage:
     DELETE_CONTACT = 'Контакт удален!'
     SUCCESS_ADD = 'Контакт успешно добавлен!'
     SUCCESS_CREATED = 'Файл создан'
+    NO_CONTACT = 'Нет контакта с таким именем'
     # ПРОДОЛЖИ
 
