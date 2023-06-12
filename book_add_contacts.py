@@ -8,50 +8,49 @@ class BookAddContacts:
         self.message = BookMessage
 
     def create_contact(self):
-        name = self.create_name()
-        number = self.create_number()
-        self.add_contact(name, number)
+        name = self.__create_name()
+        number = self.__create_number()
+        self.__add_contact(name, number)
+        print(self.message.SUCCESS_ADD)
 
-    def create_name(self):
-        name = self.enter_name()
-        name = self.validate_name(name)
-        return name
+    def __create_name(self):
+        while True:
+            name = self.__enter_name()
+            if self.is_valid_name(name):
+                return name
 
-    def enter_name(self):
+    def __enter_name(self):
         name = input(self.message.ENTER_NAME)
         return name
 
-    def validate_name(self, name):
+    def is_valid_name(self, name):
         if not name:
             print(self.message.EMPTY_NAME)
-            name = self.create_name()
-            return name
+            return False
+
         elif name in self.contacts:
             print(self.message.OVERWRITE_NUMBER)
-            self.create_contact()
-        else:
-            return name
+            return False
+        return True
 
-    def create_number(self):
-        number = self.enter_number()
-        number = self.validate_number(number)
-        return number
+    def __create_number(self):
+        while True:
+            number = self.__enter_number()
+            if self.is_valid_number(number):
+                return number
 
-    def enter_number(self):
+    def __enter_number(self):
         number = input(self.message.ENTER_NUMBER)
         return number
 
-    def validate_number(self, number):
-        if len(number) == 5:
-            print(self.message.SUCCESS_ADD)
-            return number
-        else:
+    def is_valid_number(self, number):
+        result = True
+        if len(number) != 5:
             print(self.message.ERR_NUMBER_LEN)
-            number = self.create_number()
-            return number
+            result = False
+        return result
 
-    def add_contact(self, name, number):
+    def __add_contact(self, name, number):
         self.contacts[name] = number
 
-
-#add_cont = BookAddContacts()
+# add_cont = BookAddContacts()

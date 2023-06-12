@@ -6,6 +6,13 @@ from book_delete_contacts import BookDeleteContacts
 
 
 class MainContact:
+    # все классы назвать как существительные
+    # проверка на уникальность по номеру и по имени (нельзя создать контакт если есть такое имя или есть такой номер)
+    # несколько номеров к одному контакту
+    # валидатор в отдельный класс
+    # импорт контактов из указанного файла (прибавить к своим контактам, исключить повторение имен)
+    # множества и их методы - почитать
+
     def __init__(self):
         self.contacts = {}
         self.message = BookMessage()
@@ -31,7 +38,7 @@ class MainContact:
                 self.writer.create_contact()
 
             elif choice == '3':
-                self.deleter.remove_name(self.contacts)
+                self.deleter.delete_contact(self.contacts)
 
             else:
                 self.saver.save_contacts(self.contacts)
@@ -40,6 +47,7 @@ class MainContact:
     def exit_program(self):
         print(self.message.EXIT)
         exit()
+
 
 start = MainContact()
 start.main()
