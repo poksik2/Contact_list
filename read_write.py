@@ -1,28 +1,57 @@
-filename = 'my_contacts.txt'
+
+class Test:
+
+    def __init__(self):
+        self.test_list = dict()
+        self.num_list = dict()
+
+    def add_to_list(self):
+        #self.num_list = {'Vova': {'Number1: ': '4321', 'Number2 ': '1234'}}
+        name = input('Name: ')
+        number = input('Number: ')
+        self.test_list['Number: '] = number
+        number2 = input('Number2: ')
+        self.test_list['Number2: '] = number2
+        print(self.test_list)
+
+        self.num_list = {name:self.test_list}
+        #print(self.num_list)
+        pass
+    def main(self):
+        self.import_contacts()
+        while True:
+            self.add_to_list()
+            self.print()
+            self.save_contacts()
+    def print(self):
+        for key, value in self.num_list.items():
+            print(key, value)
+            pass
+
+    def save_contacts(self):
+        with open('test_file.txt', 'a', encoding='utf-8') as file:
+            for name, number in self.num_list.items():
+                file.write(f'{name}; {number}\n')
 
 
-def write_dict_elements_to_file():
-    contacts = {
-        'a': 1,
-        'b': 2,
-    }
-
-    with open('my_contacts.txt', 'w', encoding='utf-8') as file:
-        for name, number in contacts.items():
-            file.write(f'{name}, {number}\n')
-
-
-def read_or_create_file():
-    try:
-        with open('my_contacts.txt', 'r', encoding='utf-8') as file:
-            file_strings = file.readlines()
-            for string in file_strings:
+    def import_contacts(self):
+        with open('test_file.txt', 'r', encoding='utf-8') as file:
+            file_string = file.readlines()
+            for string in file_string:
                 string = string.strip()
-                name, number = string.split(', ')
-    except:
-        with open('my_contacts.txt', 'w', encoding='utf-8') as file:
-            read_or_create_file()
+                name, number = string.split('; ')
+                #print(type(name), type(number))
+                number = eval(number)
+                self.num_list = {name: number}
+                for nam, num in self.num_list.items():
+                    num = self.num_list[nam]
 
+                #print(num)
+                for kay, nem in num.items():
+                    nem = num[kay]
 
-read_or_create_file()
-# write_dict_elements_to_file()
+                    print(name,nem)
+                #self.print()
+
+start = Test()
+start.main()
