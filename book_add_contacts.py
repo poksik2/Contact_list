@@ -31,17 +31,22 @@ class BookAddContacts:
         while True:
             i += 1
             number = self.__create_number()
-            choice = input('Добавить еще один номер 1- Да, 2- Нет ')
             self.number_contacts[f'Number {i} '] = number
-            if choice == '1':
-                continue
+            if self.validate.match_number(number, self.contacts):
+                choice = input('Добавить еще один номер 1- Да, 2- Нет ')
+                #print(self.contacts)
+                if choice == '1':
+                    continue
+                else:
+                    break
             else:
-                break
+                continue
 
     def __create_number(self):
         while True:
             number = self.__enter_number()
             if self.validate.validate_number(number):
+
                 return number
 
     def __enter_number(self):

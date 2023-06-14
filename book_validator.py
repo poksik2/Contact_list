@@ -24,3 +24,19 @@ class BookValidator:
             result = False
         return result
 
+    def match_number(self, number, number_contacts):
+        result = True
+        for name, numbers in number_contacts.items():
+            contact = number_contacts[name]
+            #print(contact)
+            for key, value in contact.items():
+                value = contact[key]
+                #print(value)
+                if number == value:
+                    #print(contact)
+                    print('Этот номер уже добавлен к другому контакту')
+                    result = False
+
+                else:
+                    break
+        return result
