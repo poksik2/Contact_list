@@ -5,7 +5,7 @@ class BookWriteContacts:
         pass
 
     def save_contacts(self, contacts):
-        with open(self.FILE_NAME, 'a', encoding='utf-8') as file:
+        with open(self.FILE_NAME, 'w', encoding='utf-8') as file:
             for name, number in contacts.items():
                 file.write(f'{name}; {number}\n')
 

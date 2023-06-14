@@ -43,15 +43,7 @@ class Test:
                 #print(type(name), type(number))
                 number = eval(number)
                 self.num_list = {name: number}
-                for nam, num in self.num_list.items():
-                    num = self.num_list[nam]
 
-                #print(num)
-                for kay, nem in num.items():
-                    nem = num[kay]
-
-                    print(name,nem)
-                #self.print()
 
 start = Test()
 start.main()

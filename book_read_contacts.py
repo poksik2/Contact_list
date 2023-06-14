@@ -21,13 +21,9 @@ class BookReadContacts:
             for string in file_string:
                 string = string.strip()
                 name, number = string.split('; ')
-                #number = eval(number)
+                number = eval(number)
                 contact = {name: number}
-                print(contact)
-
                 contacts.update(contact)
-
-            #print(contacts)
             return contacts
 
     def create_file(self) -> None:
@@ -38,7 +34,22 @@ class BookReadContacts:
         print(self.message.TITLE)
         #print(contacts)
         for key, value in contacts.items():
-            print(key, value)
+            print(key)
+            pass
+        self.__print_number(contacts)
+
+    def __print_number(self,contacts):
+        choice = input('Enter contact name: ')
+        if choice in contacts:
+            numbers = contacts[choice]
+            i = 0
+            print(choice)
+            for name, number in numbers.items():
+                i += 1
+                number = numbers[name]
+                print(f'Nambers {i}: {number}')
+        else:
+            print('There is no contact with that name!')
 
 
 #read = BookReadContacts()
