@@ -1,25 +1,25 @@
 from book_message import BookMessage
-from book_read_contacts import BookReadContacts
-from book_add_contacts import BookAddContacts
-from book_write_contacts import BookWriteContacts
+from book_read_contacts import BookReaderContacts
+from book_add_contacts import BookAdderContacts
+from book_write_contacts import BookWriterContacts
 from book_delete_contacts import BookDeleteContacts
 
 
 class MainContact:
-    # все классы назвать как существительные
+    # все классы назвать как существительные +!
     # проверка на уникальность по номеру и по имени (нельзя создать контакт если есть такое имя или есть такой номер) +!
-    # множества и их методы - почитать
+    # множества и их методы - почитать +!
     # несколько номеров к одному контакту +!
     # валидатор в отдельный класс +!
-    # импорт контактов из указанного файла (прибавить к своим контактам, исключить повторение имен)
+    # импорт контактов из указанного файла (прибавить к своим контактам, исключить повторение имен) +!
 
     def __init__(self):
         self.contacts = dict()
         self.message = BookMessage()
-        self.reader = BookReadContacts()
-        self.writer = BookAddContacts(self.contacts)
+        self.reader = BookReaderContacts()
+        self.writer = BookAdderContacts(self.contacts)
         self.deleter = BookDeleteContacts()
-        self.saver = BookWriteContacts()
+        self.saver = BookWriterContacts()
 
     def main(self):
         try:
@@ -39,6 +39,9 @@ class MainContact:
 
             elif choice == '3':
                 self.deleter.delete_contact(self.contacts)
+
+            elif choice == '4':
+                self.reader.import_more_contacts(self.contacts)
 
             else:
                 self.saver.save_contacts(self.contacts)

@@ -2,7 +2,7 @@ from book_message import BookMessage
 
 
 
-class BookReadContacts:
+class BookReaderContacts:
     FILE_NAME = 'my_contact_list_1.1.txt'
 
     def __init__(self):
@@ -51,5 +51,16 @@ class BookReadContacts:
         else:
             print('There is no contact with that name!')
 
+    def import_more_contacts(self, contacts):
+        file_name = input('Enter file name: ')
+        with open(file_name, 'r', encoding='utf-8') as file:
+            file_string = file.readlines()
+            for string in file_string:
+                string = string.strip()
+                name, number = string.split('; ')
+                number = eval(number)
+                contact = {name: number}
+                contacts.update(contact)
+            return contacts
 
 #read = BookReadContacts()

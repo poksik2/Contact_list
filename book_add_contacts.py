@@ -1,7 +1,7 @@
 from book_message import BookMessage
 from book_validator import BookValidator
 
-class BookAddContacts:
+class BookAdderContacts:
 
     def __init__(self, contacts):
         self.contacts = contacts
