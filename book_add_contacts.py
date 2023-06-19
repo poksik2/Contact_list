@@ -38,8 +38,6 @@ class BookAdderContacts:
                     continue
                 else:
                     break
-            else:
-                continue
 
     def __create_number(self):
         while True:

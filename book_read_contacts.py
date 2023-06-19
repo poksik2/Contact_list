@@ -40,12 +40,9 @@ class BookReaderContacts:
         choice = input('Enter contact name: ')
         if choice in contacts:
             numbers = contacts[choice]
-            i = 0
             print(choice)
             for name, number in numbers.items():
-                i += 1
-                number = numbers[name]
-                print(f'Nambers {i}: {number}')
+                print(f'{name}: {number}')
         else:
             print('There is no contact with that name!')
 
