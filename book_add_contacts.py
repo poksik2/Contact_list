@@ -34,7 +34,6 @@ class BookAdderContacts:
             self.number_contacts[f'Number {i} '] = number
             if self.validate.match_number(number, self.contacts):
                 choice = input('Добавить еще один номер 1- Да, 2- Нет ')
-                #print(self.contacts)
                 if choice == '1':
                     continue
                 else:
@@ -46,7 +45,6 @@ class BookAdderContacts:
         while True:
             number = self.__enter_number()
             if self.validate.validate_number(number):
-
                 return number
 
     def __enter_number(self):
@@ -56,7 +54,6 @@ class BookAdderContacts:
     def __add_contact(self, name):
         self.contact = {name: self.number_contacts}
         self.contacts.update(self.contact)
-
 
 
 # add_cont = BookAddContacts()

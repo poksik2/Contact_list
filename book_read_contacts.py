@@ -1,7 +1,6 @@
 from book_message import BookMessage
 
 
-
 class BookReaderContacts:
     FILE_NAME = 'my_contact_list_1.1.txt'
 
@@ -32,7 +31,6 @@ class BookReaderContacts:
 
     def print_contacts(self, contacts):
         print(self.message.TITLE)
-        #print(contacts)
         for key, value in contacts.items():
             print(key)
             pass
