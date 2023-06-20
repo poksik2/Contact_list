@@ -1,18 +1,18 @@
-from bs4 import BeautifulSoup
-import requests
-import pandas as pd
-from urllib.request import urlopen
 
-class Parser:
-    URL_SITE = "https://pogoda.mail.ru/prognoz/bryansk/"
+dict1 = {'Kot': ['94372', '27535'],'Kit': ['09097'],'Tim': ['11445', '66223']}
+dict2 = {'Foma': ['11111'],'Vova': ['12123', '23231'],'Tom': ['75846', '43123', '09098'],'Kot': ['94372', '27538']}
+dict3 = {}
+list1 =[]
+list2 = []
 
-    def pars(self):
-        r = requests.get(self.URL_SITE)
-        bs = BeautifulSoup(r.text, "html.parser")
-        table = bs.find('div', class_="information__content__temperature")
-        print('Сейчас за окном',table.text.strip())
-        tible1 = bs.find('span', title="Ощущается как +23°")
-        print(tible1.text.strip())
+for name, num in dict1.items():
+    if name in dict2.keys() and dict1.keys():
+        list1 = num
+        print(list)
+for name, num in dict2.items():
+    if name in dict1.keys() and dict2.keys():
+        list2 = (num)
+        print(type(list2))
 
-p = Parser()
-p.pars()
+list1 = list1+list2
+print(list(set(list1)))

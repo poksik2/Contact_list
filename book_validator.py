@@ -17,29 +17,26 @@ class BookValidator:
             return False
         return True
 
-    def validate_number(self, number):
+    def validate_number(self, number, contacts):
+        result = self.__validate_number_by_length(number)
+        if result == True:
+            result = self.__validate_match_number(number,contacts)
+        return result
+
+    def __validate_number_by_length(self, number):
         result = True
         if len(number) != 5:
             print(self.message.ERR_NUMBER_LEN)
             result = False
         return result
-
-    def __validate_number_by_length(self):
-        pass
         #!!!!!!!!
 
 
-    def __validate_match_number(self, number, number_contacts):
-        #naming!
+    def __validate_match_number(self, number, contacts):
         result = True
-        for name, numbers in number_contacts.items():
-        #for name in number_contacts:
-            contact = number_contacts[name]
-            #print(numbers, 11111)
-            #print(contact)
-            for value in contact.values():
-                if number == value:
-                    print('Этот номер уже добавлен к другому контакту')
-                    result = False
-
+        for name in contacts:
+            contact = contacts[name]
+            if number in contact:
+                print('Этот номер уже добавлен к другому контакту')
+                result = False
         return result

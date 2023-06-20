@@ -19,8 +19,7 @@ class BookReaderContacts:
             file_string = file.readlines()
             for string in file_string:
                 string = string.strip()
-                name, number = string.split('; ')
-                number = eval(number)
+                name, number = string.split(': ')
                 contact = {name: number}
                 contacts.update(contact)
             return contacts
@@ -33,16 +32,16 @@ class BookReaderContacts:
         print(self.message.TITLE)
         for key, value in contacts.items():
             print(key)
-            pass
         self.__print_number(contacts)
 
     def __print_number(self,contacts):
         choice = input('Enter contact name: ')
+        i = 0
         if choice in contacts:
             numbers = contacts[choice]
-            print(choice)
-            for name, number in numbers.items():
-                print(f'{name}: {number}')
+            while i != len(numbers):
+                print(f'ID {i+1}: {numbers[i]}')
+                i += 1
         else:
             print('There is no contact with that name!')
 
@@ -52,8 +51,7 @@ class BookReaderContacts:
             file_string = file.readlines()
             for string in file_string:
                 string = string.strip()
-                name, number = string.split('; ')
-                number = eval(number)
+                name, number = string.split(': ')
                 contact = {name: number}
                 contacts.update(contact)
             return contacts

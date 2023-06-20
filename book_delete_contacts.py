@@ -1,7 +1,7 @@
 from book_message import BookMessage
 
 
-class BookDeleteContacts:
+class BookDeleterContacts:
 
     def __init__(self):
         self.message = BookMessage()

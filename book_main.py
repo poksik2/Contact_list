@@ -2,8 +2,8 @@ from book_message import BookMessage
 from book_read_contacts import BookReaderContacts
 from book_add_contacts import BookAdderContacts
 from book_write_contacts import BookWriterContacts
-from book_delete_contacts import BookDeleteContacts
-
+from book_delete_contacts import BookDeleterContacts
+from book_import import BookImport
 
 class MainContact:
     # все классы назвать как существительные +!
@@ -13,7 +13,7 @@ class MainContact:
     # валидатор в отдельный класс +!
     # импорт контактов из указанного файла (прибавить к своим контактам, исключить повторение имен) +!
 
-    # Переделать номера в список {key:[num,num]}
+    # Переделать номера в список {key:[num,num]} +!
     # При импорте если имена совпали: выводим список имен (с номерами из двух коллекций)
     # Вопрошаем: перезаписать, объединить, создать_новые.
     # Перезапись: только новые номера
@@ -29,14 +29,14 @@ class MainContact:
         self.message = BookMessage()
         self.reader = BookReaderContacts()
         self.writer = BookAdderContacts(self.contacts)
-        self.deleter = BookDeleteContacts()
+        self.deleter = BookDeleterContacts()
         self.saver = BookWriterContacts()
-
+        self.importer = BookImport(self.contacts)
     def main(self):
-        try:
+        #try:
             self.start_program()
-        finally:
-            self.exit_program()
+        #finally:
+            #self.exit_program()
 
     def start_program(self):
         self.reader.initialize_contact(self.contacts)
@@ -52,7 +52,7 @@ class MainContact:
                 self.deleter.delete_contact(self.contacts)
 
             elif choice == '4':
-                self.reader.import_more_contacts(self.contacts)
+                self.importer.overlap_contacts()
 
             else:
                 self.saver.save_contacts(self.contacts)
