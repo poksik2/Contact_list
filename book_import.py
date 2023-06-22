@@ -1,3 +1,4 @@
+
 class BookImport:
 
     def __init__(self, contacts):
@@ -18,15 +19,23 @@ class BookImport:
         self.initialization_contact()
         for name, num in self.contacts.items():
             if name in self.contacts_new.keys() and self.contacts.keys():
-                list1 = num
-                list1 = eval(list1)
-                print(type(list1))
-        for name, num in self.contacts_new.items():
-            if name in self.contacts.keys() and self.contacts_new.keys():
-                list2 = (num)
-                list2 = eval(list2)
-                listing = list2 + list1
-                #print(list(set(listing)))
-        self.contact[name] = (list(set(listing)))
-        print(self.contact)
+                list1=(num)
+                print(num)
+                list1 = list1.strip('[]')
+                list1 = list1.split(', ')
+                #print((list1))
+            for names, nums in self.contacts_new.items():
+                if names in self.contacts.keys() and self.contacts_new.keys():
+                    list2=(nums)
+                    print(nums)
+                    list2 = list2.strip('[]')
+                    list2 = list2.split(', ')
+                    listing = list2 + list1
+                    #print((listing))
+                    self.contact[name] = (list(set(list1)),list(set(list2)) )
+            #print(self.contact)
+        #self.print_contacts()
 
+    def print_contacts(self):
+        for key, value in self.contact.items():
+            print(key, value)

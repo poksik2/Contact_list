@@ -39,21 +39,15 @@ class BookReaderContacts:
         i = 0
         if choice in contacts:
             numbers = contacts[choice]
+            numbers = numbers.strip('[, ]')
+            #numbers = numbers.strip(', ')
+            numbers = numbers.split(', ')
+            print((numbers))
             while i != len(numbers):
                 print(f'ID {i+1}: {numbers[i]}')
                 i += 1
         else:
             print('There is no contact with that name!')
 
-    def import_more_contacts(self, contacts):
-        file_name = input('Enter file name: ')
-        with open(file_name, 'r', encoding='utf-8') as file:
-            file_string = file.readlines()
-            for string in file_string:
-                string = string.strip()
-                name, number = string.split(': ')
-                contact = {name: number}
-                contacts.update(contact)
-            return contacts
 
 #read = BookReadContacts()

@@ -8,7 +8,7 @@ list2 = []
 for name, num in dict1.items():
     if name in dict2.keys() and dict1.keys():
         list1 = num
-        print(list)
+        print(num)
 for name, num in dict2.items():
     if name in dict1.keys() and dict2.keys():
         list2 = (num)

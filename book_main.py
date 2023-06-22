@@ -33,10 +33,10 @@ class MainContact:
         self.saver = BookWriterContacts()
         self.importer = BookImport(self.contacts)
     def main(self):
-        #try:
+        try:
             self.start_program()
-        #finally:
-            #self.exit_program()
+        finally:
+            self.exit_program()
 
     def start_program(self):
         self.reader.initialize_contact(self.contacts)
