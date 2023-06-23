@@ -5,6 +5,8 @@ class BookImport:
         self.contacts = contacts
         self.contacts_new = dict()
         self.contact = dict()
+        self.dict3 = dict()
+        self.dict4 = dict()
     def initialization_contact(self):
         file_name = input('Enter file name: ')
         with open(file_name, 'r', encoding='utf-8') as file:
@@ -16,25 +18,24 @@ class BookImport:
                 self.contacts_new.update(contact)
 
     def overlap_contacts(self):
+        #global list1, listing, list2
         self.initialization_contact()
-        for name, num in self.contacts.items():
-            if name in self.contacts_new.keys() and self.contacts.keys():
-                list1=(num)
-                print(num)
-                list1 = list1.strip('[]')
-                list1 = list1.split(', ')
-                #print((list1))
-            for names, nums in self.contacts_new.items():
-                if names in self.contacts.keys() and self.contacts_new.keys():
-                    list2=(nums)
-                    print(nums)
-                    list2 = list2.strip('[]')
-                    list2 = list2.split(', ')
-                    listing = list2 + list1
-                    #print((listing))
-                    self.contact[name] = (list(set(list1)),list(set(list2)) )
+        for key, value in self.contacts.items():
+            if key in self.contacts_new:
+                self.dict3[key] = value
+                print(self.dict3)
+        for keys, values in self.contacts_new.items():
+            if keys in self.contacts.items():
+                self.dict4[keys] = values
+                print(self.dict4)
+
+        #for key, value in self.dict3.items():
+            #list1 = list(set(self.dict3[key] + self.dict4[key]))
+            #self.contacts[key] = list1
+            # print(key,list1)
+                #self.contact[name] = (listing)
             #print(self.contact)
-        #self.print_contacts()
+        self.print_contacts()
 
     def print_contacts(self):
         for key, value in self.contact.items():
