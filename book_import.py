@@ -3,19 +3,29 @@ class BookImport:
 
     def __init__(self, contacts):
         self.contacts = contacts
-        self.contacts_new = dict()
+        self.contacts_new = {}
         self.contact = dict()
         self.dict3 = dict()
         self.dict4 = dict()
+        self.list1 = []
     def initialization_contact(self):
-        file_name = input('Enter file name: ')
+        file_name = 'my_contacts.txt'
         with open(file_name, 'r', encoding='utf-8') as file:
             file_string = file.readlines()
-            #print(file_string)
-            for string in file_string:
+            i = 0
+            while i != len(file_string):
+                string = (file_string[i])
+                #print(string)
+                i += 1
                 string = string.strip()
-                name, number = string.split(': ')
-                self.contacts_new[name] = number
+                #print(string)
+                string = string.split(': ')
+                #print(string)
+                list1 = string[1]
+                #print(list1)
+                list1 = list1.split(', ')
+                self.contacts_new[string[0]] = list1
+            print(self.contacts_new)
 
 
     def overlap_contacts(self):
