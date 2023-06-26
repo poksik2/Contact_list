@@ -11,30 +11,32 @@ class BookImport:
         file_name = input('Enter file name: ')
         with open(file_name, 'r', encoding='utf-8') as file:
             file_string = file.readlines()
+            #print(file_string)
             for string in file_string:
                 string = string.strip()
                 name, number = string.split(': ')
-                contact = {name: number}
-                self.contacts_new.update(contact)
+                self.contacts_new[name] = number
+
 
     def overlap_contacts(self):
-        #global list1, listing, list2
         self.initialization_contact()
         for key, value in self.contacts.items():
             if key in self.contacts_new:
                 self.dict3[key] = value
-                print(self.dict3)
+        #print(self.dict3, 1)
         for keys, values in self.contacts_new.items():
-            if keys in self.contacts.items():
+            if keys in self.contacts:
                 self.dict4[keys] = values
-                print(self.dict4)
+        #print(self.dict4)
+        for key, value in self.dict3.items():
+            list1 = self.dict3[key]
+            list1 = list1.strip('[]')
+            list2 = self.dict4[key]
+            #list2 = list2.strip('[]')
+            list2 = list(list2)
 
-        #for key, value in self.dict3.items():
-            #list1 = list(set(self.dict3[key] + self.dict4[key]))
-            #self.contacts[key] = list1
-            # print(key,list1)
-                #self.contact[name] = (listing)
-            #print(self.contact)
+            print(list2)
+
         self.print_contacts()
 
     def print_contacts(self):
