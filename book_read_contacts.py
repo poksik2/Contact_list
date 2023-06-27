@@ -17,11 +17,15 @@ class BookReaderContacts:
     def import_contacts(self, contacts):
         with open(self.FILE_NAME, 'r', encoding='utf-8') as file:
             file_string = file.readlines()
-            for string in file_string:
+            i = 0
+            while i != len(file_string):
+                string = (file_string[i])
+                i += 1
                 string = string.strip()
-                name, number = string.split(': ')
-                contact = {name: number}
-                contacts.update(contact)
+                string = string.split(': ')
+                list1 = string[1]
+                list1 = list1.split(', ')
+                contacts[string[0]] = list1
             return contacts
 
     def create_file(self) -> None:
@@ -39,10 +43,6 @@ class BookReaderContacts:
         i = 0
         if choice in contacts:
             numbers = contacts[choice]
-            numbers = numbers.strip('[, ]')
-            #numbers = numbers.strip(', ')
-            numbers = numbers.split(', ')
-            print((numbers))
             while i != len(numbers):
                 print(f'ID {i+1}: {numbers[i]}')
                 i += 1
