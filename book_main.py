@@ -4,7 +4,7 @@ from book_add_contacts import BookAdderContacts
 from book_write_contacts import BookWriterContacts
 from book_delete_contacts import BookDeleterContacts
 from book_import import BookImport
-
+from book_edit_contact import BookEditorContacts
 class MainContact:
     # все классы назвать как существительные +!
     # проверка на уникальность по номеру и по имени (нельзя создать контакт если есть такое имя или есть такой номер) +!
@@ -14,11 +14,11 @@ class MainContact:
     # импорт контактов из указанного файла (прибавить к своим контактам, исключить повторение имен) +!
 
     # Переделать номера в список {key:[num,num]} +!
-    # При импорте если имена совпали: выводим список имен (с номерами из двух коллекций)
+    # При импорте если имена совпали: выводим список имен (с номерами из двух коллекций) +!
     # Вопрошаем: перезаписать, объединить, создать_новые.
-    # Перезапись: только новые номера
-    # объединить: все номера остаются
-    # созадать новые: перебирать имена с изменением имени для сохранения новых и старых контактов отдельно
+    # Перезапись: только новые номера +!
+    # объединить: все номера остаются +!
+    # созадать новые: перебирать имена с изменением имени для сохранения новых и старых контактов отдельно +!
     # Редактирование контактов: сменить имя, сменить один из номеров, добавить и удалить
     # Валидатор найминг!
 
@@ -32,6 +32,7 @@ class MainContact:
         self.deleter = BookDeleterContacts()
         self.saver = BookWriterContacts()
         self.importer = BookImport(self.contacts)
+        self.editor = BookEditorContacts(self.contacts)
     def main(self):
         #try:
             self.start_program()
@@ -53,6 +54,9 @@ class MainContact:
 
             elif choice == '4':
                 self.importer.overlap_contacts()
+
+            elif choice == '5':
+                self.editor.editor_contacts()
 
             else:
                 self.saver.save_contacts(self.contacts)
