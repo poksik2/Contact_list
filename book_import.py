@@ -3,6 +3,7 @@ class BookImport:
     def __init__(self, contacts):
         self.contacts = contacts
         self.contacts_new = {}
+        # naming
         self.dict3 = dict()
         self.dict4 = dict()
         self.list1 = []
@@ -20,14 +21,28 @@ class BookImport:
             file_string = file.readlines()
             i = 0
             while i != len(file_string):
+                # naming
                 string = (file_string[i])
                 i += 1
                 string = string.strip()
                 string = string.split(': ')
+                # name = string[0]
+                # numbers = string[1]
+                # self.parse_phone_number_sting(numbers)
                 list1 = string[1]
                 list1 = list1.strip('\"')
                 list1 = list1.split(', ')
                 self.contacts_new[string[0]] = list1
+
+    def parse_phone_number_sting(self, number_string):
+        string_without_bracers = number_string[1:-1]
+        numbers_as_string = string_without_bracers.split(',')
+        numbers = [self.strip_number_string(number_string) for number_string in numbers_as_string]
+        return numbers
+
+    def strip_number_string(self, number_string: str) -> int:
+        digital_string = ''.join([symbol for symbol in number_string if symbol.isdigit()])
+        return int(digital_string)
 
     def repeat_old_contacts(self):
         for key, value in self.contacts.items():
@@ -46,13 +61,22 @@ class BookImport:
             print(self.dict4[key])
 
     def choice_action(self):
-        choice = input('Перезаписать - 1, Объединить - 2, Создать новые - 3: ')
+        # при импорте возникли неполадки
+        # имена дубликаты: имя1, имя2
+
+        # что делать с номерами контакта имя1?
+
+        # что делать с номерами контакта имя2?
+
+        choice = input('Перезаписать - 1, Объединить - 2, Создать новый контакт - 3: ')
         if choice == '1':
             self.overwrite_contact()
         elif choice == '2':
             self.join_contact()
         elif choice == '3':
             self.create_new_name()
+        # пропустить
+        # пропустить все
 
     def overwrite_contact(self):
         self.contacts |= self.dict4

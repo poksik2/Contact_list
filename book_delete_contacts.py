@@ -18,10 +18,14 @@ class BookDeleterContacts:
         return name
 
     def validate_name(self, name, contacts):
+        # def __validate_name(self, name, contacts):
+        # в валидатор
         if name not in contacts:
             print(self.message.NO_CONTACT)
+            # return False
         else:
             return name
+            # return True
 
     def __delete_contact(self, name, contacts):
         del contacts[name]

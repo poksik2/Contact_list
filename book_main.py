@@ -5,6 +5,8 @@ from book_write_contacts import BookWriterContacts
 from book_delete_contacts import BookDeleterContacts
 from book_import import BookImport
 from book_edit_contact import BookEditorContacts
+
+
 class MainContact:
     # все классы назвать как существительные +!
     # проверка на уникальность по номеру и по имени (нельзя создать контакт если есть такое имя или есть такой номер) +!
@@ -24,6 +26,10 @@ class MainContact:
 
     # Почитать про БД
 
+    # type hinting example: def func(arg_1: int, arg_2: str, arg_3: Contact) -> None/int/str
+    # использовать метод для ввода номера/имени из одного места
+    # разбить валидатор на классы
+
     def __init__(self):
         self.contacts = dict()
         self.message = BookMessage()
@@ -33,11 +39,13 @@ class MainContact:
         self.saver = BookWriterContacts()
         self.importer = BookImport(self.contacts)
         self.editor = BookEditorContacts(self.contacts)
+
     def main(self):
-        #try:
+        try:
             self.start_program()
-        #finally:
-            #self.exit_program()
+
+        finally:
+            self.exit_program()
 
     def start_program(self):
         self.reader.initialize_contact(self.contacts)
